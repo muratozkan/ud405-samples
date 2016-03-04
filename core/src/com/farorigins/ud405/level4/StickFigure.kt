@@ -30,27 +30,27 @@ class StickFigure : ApplicationAdapter() {
     }
 
     override fun render() {
-        Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-        renderer.begin(ShapeRenderer.ShapeType.Filled);
+        renderer.begin(ShapeRenderer.ShapeType.Filled)
 
         // Head
-        renderer.circle(100f, 100f, 10f);
-        renderer.end();
+        renderer.circle(100f, 100f, 10f)
+        renderer.end()
 
-        renderer.begin(ShapeRenderer.ShapeType.Line);
+        renderer.begin(ShapeRenderer.ShapeType.Line)
 
         // Torso
-        renderer.line(100f, 50f, 100f, 100f);
+        renderer.line(100f, 50f, 100f, 100f)
 
         // Legs
-        renderer.line(85f, 35f, 100f, 50f);
-        renderer.line(115f, 35f, 100f, 50f);
+        renderer.line(85f, 35f, 100f, 50f)
+        renderer.line(115f, 35f, 100f, 50f)
 
         // Arms
-        renderer.line(85f, 70f, 100f, 85f);
-        renderer.line(115f, 70f, 100f, 85f);
-        renderer.end();
+        renderer.line(85f, 70f, 100f, 85f)
+        renderer.line(115f, 70f, 100f, 85f)
+        renderer.end()
     }
 }

@@ -26,7 +26,7 @@ class DragonCurve : ApplicationAdapter() {
     private lateinit var shapeRenderer: ShapeRenderer
 
     override fun create() {
-        dragonCurve = CurveGenerator.generateDragonCurve(Gdx.graphics.width, Gdx.graphics.height, RECURSIONS);
+        dragonCurve = CurveGenerator.generateDragonCurve(Gdx.graphics.width, Gdx.graphics.height, RECURSIONS)
         shapeRenderer = ShapeRenderer()
     }
 

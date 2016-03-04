@@ -1,15 +1,15 @@
 package com.farorigins.ud405.level4
 
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Input.Keys
+import com.badlogic.gdx.InputAdapter
+import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.graphics.OrthographicCamera
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType
+import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.math.Vector3
 
 /**
  *
@@ -32,20 +32,20 @@ class DemoCamera : InputAdapter() {
     val overviewCamera = OrthographicCamera()
     val closeupCamera = OrthographicCamera()
 
-    var inCloseupMode = true;
+    var inCloseupMode = true
 
     init {
-        closeupCamera.setToOrtho(false, Gdx.graphics.width * INITIAL_ZOOM, Gdx.graphics.height * INITIAL_ZOOM);
-        overviewCamera.setToOrtho(false, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat());
+        closeupCamera.setToOrtho(false, Gdx.graphics.width * INITIAL_ZOOM, Gdx.graphics.height * INITIAL_ZOOM)
+        overviewCamera.setToOrtho(false, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
     }
 
     fun resize(width: Float, height: Float) {
-        overviewCamera.setToOrtho(false, width, height);
+        overviewCamera.setToOrtho(false, width, height)
     }
 
     override fun keyUp(keycode: Int): Boolean {
         if (keycode == Keys.SPACE) {
-            inCloseupMode = !inCloseupMode;
+            inCloseupMode = !inCloseupMode
         }
         // Reset
         if (keycode == Keys.R) {
@@ -76,47 +76,47 @@ class DemoCamera : InputAdapter() {
 
         // Rotation
         if (Gdx.input.isKeyPressed(Keys.Q)) {
-            closeupCamera.rotate(-ROTATION_RATE * delta);
+            closeupCamera.rotate(-ROTATION_RATE * delta)
         }
         if (Gdx.input.isKeyPressed(Keys.E)) {
-            closeupCamera.rotate(ROTATION_RATE * delta);
+            closeupCamera.rotate(ROTATION_RATE * delta)
         }
 
         // Viewport size (ignoring aspect ratio)
         if (Gdx.input.isKeyPressed(Keys.W)) {
-            closeupCamera.viewportHeight += SCALE_RATE * delta;
+            closeupCamera.viewportHeight += SCALE_RATE * delta
         }
         if (Gdx.input.isKeyPressed(Keys.S)) {
-            closeupCamera.viewportHeight -= SCALE_RATE * delta;
+            closeupCamera.viewportHeight -= SCALE_RATE * delta
         }
         if (Gdx.input.isKeyPressed(Keys.A)) {
-            closeupCamera.viewportWidth -= SCALE_RATE * delta;
+            closeupCamera.viewportWidth -= SCALE_RATE * delta
         }
         if (Gdx.input.isKeyPressed(Keys.D)) {
-            closeupCamera.viewportWidth += SCALE_RATE * delta;
+            closeupCamera.viewportWidth += SCALE_RATE * delta
         }
 
         // Zoom
         if (Gdx.input.isKeyPressed(Keys.Z)) {
-            proportionalZoom(-delta);
+            proportionalZoom(-delta)
         }
 
         if (Gdx.input.isKeyPressed(Keys.X)) {
-            proportionalZoom(delta);
+            proportionalZoom(delta)
         }
-        closeupCamera.update();
+        closeupCamera.update()
     }
 
     private fun proportionalZoom(delta: Float) {
-        val aspectRatio = overviewCamera.viewportWidth / overviewCamera.viewportHeight;
-        closeupCamera.viewportWidth += SCALE_RATE * delta;
-        closeupCamera.viewportHeight += SCALE_RATE / aspectRatio * delta;
+        val aspectRatio = overviewCamera.viewportWidth / overviewCamera.viewportHeight
+        closeupCamera.viewportWidth += SCALE_RATE * delta
+        closeupCamera.viewportHeight += SCALE_RATE / aspectRatio * delta
     }
 
     private fun fixAspectRatio() {
-        val aspectRatio = overviewCamera.viewportWidth / overviewCamera.viewportHeight;
-        closeupCamera.viewportHeight = closeupCamera.viewportWidth / aspectRatio;
-        closeupCamera.update();
+        val aspectRatio = overviewCamera.viewportWidth / overviewCamera.viewportHeight
+        closeupCamera.viewportHeight = closeupCamera.viewportWidth / aspectRatio
+        closeupCamera.update()
     }
 
     /**
@@ -124,11 +124,11 @@ class DemoCamera : InputAdapter() {
      */
     fun setCamera(renderer: ShapeRenderer) {
         if (inCloseupMode) {
-            closeupCamera.update();
-            renderer.projectionMatrix = closeupCamera.combined;
+            closeupCamera.update()
+            renderer.projectionMatrix = closeupCamera.combined
         } else {
-            overviewCamera.update();
-            renderer.projectionMatrix = overviewCamera.combined;
+            overviewCamera.update()
+            renderer.projectionMatrix = overviewCamera.combined
         }
     }
 
@@ -138,24 +138,24 @@ class DemoCamera : InputAdapter() {
     fun render(renderer: ShapeRenderer) {
         if (!inCloseupMode) {
             // Figure out the location of the camera corners in the world
-            val bottomLeft = myUnproject(closeupCamera, 0f, closeupCamera.viewportHeight);
-            val bottomRight = myUnproject(closeupCamera, closeupCamera.viewportWidth, closeupCamera.viewportHeight);
-            val topRight = myUnproject(closeupCamera, closeupCamera.viewportWidth, 0f);
-            val topLeft = myUnproject(closeupCamera, 0f, 0f);
+            val bottomLeft = myUnproject(closeupCamera, 0f, closeupCamera.viewportHeight)
+            val bottomRight = myUnproject(closeupCamera, closeupCamera.viewportWidth, closeupCamera.viewportHeight)
+            val topRight = myUnproject(closeupCamera, closeupCamera.viewportWidth, 0f)
+            val topLeft = myUnproject(closeupCamera, 0f, 0f)
 
             // Draw a rectangle showing the closeup camera's field of view
-            renderer.begin(ShapeType.Line);
-            renderer.color = Color.BLUE;
+            renderer.begin(ShapeType.Line)
+            renderer.color = Color.BLUE
             val poly = floatArrayOf(
                     bottomLeft.x, bottomLeft.y,
                     bottomRight.x, bottomRight.y,
                     topRight.x, topRight.y,
                     topLeft.x, topLeft.y
-            );
+            )
 
-            renderer.set(ShapeType.Line);
-            renderer.polygon(poly);
-            renderer.end();
+            renderer.set(ShapeType.Line)
+            renderer.polygon(poly)
+            renderer.end()
         }
     }
 
@@ -164,14 +164,14 @@ class DemoCamera : InputAdapter() {
      * pointing down.
      */
     private fun myUnproject(camera: OrthographicCamera, x: Float, y: Float): Vector2 {
-        val raw = camera.unproject(Vector3(x, y + overviewCamera.viewportHeight - camera.viewportHeight, 0f), 0f, 0f, camera.viewportWidth, camera.viewportHeight);
-        return Vector2(raw.x, raw.y);
+        val raw = camera.unproject(Vector3(x, y + overviewCamera.viewportHeight - camera.viewportHeight, 0f), 0f, 0f, camera.viewportWidth, camera.viewportHeight)
+        return Vector2(raw.x, raw.y)
     }
 
     companion object {
-        val SCALE_RATE = 100f;
-        val MOVE_RATE = 100f;
-        val ROTATION_RATE = 45f;
-        val INITIAL_ZOOM = 0.5f;
+        val SCALE_RATE = 100f
+        val MOVE_RATE = 100f
+        val ROTATION_RATE = 45f
+        val INITIAL_ZOOM = 0.5f
     }
 }

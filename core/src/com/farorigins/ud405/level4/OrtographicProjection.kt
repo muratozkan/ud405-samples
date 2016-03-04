@@ -15,21 +15,21 @@ class OrthographicProjection : ApplicationAdapter() {
         renderer = ShapeRenderer()
         demoCamera = DemoCamera()
         // Tell LibGDX that demoCamera knows what to do with keypresses
-        Gdx.input.inputProcessor = demoCamera;
+        Gdx.input.inputProcessor = demoCamera
     }
 
     override fun resize(width: Int, height: Int) {
-        demoCamera.resize(width.toFloat(), height.toFloat());
+        demoCamera.resize(width.toFloat(), height.toFloat())
     }
 
     override fun render() {
-        Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-        demoCamera.update();
-        demoCamera.setCamera(renderer);
-        renderTestScene(renderer);
-        demoCamera.render(renderer);
+        demoCamera.update()
+        demoCamera.setCamera(renderer)
+        renderTestScene(renderer)
+        demoCamera.render(renderer)
     }
 
     /**

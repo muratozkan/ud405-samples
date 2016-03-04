@@ -41,7 +41,7 @@ class RectangularFlower : ApplicationAdapter() {
         // Set the active color to yellow
         shapeRenderer.color = Color.YELLOW
         // Use a loop to draw 20 of these petals in a circle
-        val petalAngle = 18f;
+        val petalAngle = 18f
         (0 .. 20).forEach { i ->
             shapeRenderer.rect(100f, 300f, 0f, 0f, 40f, 40f, 1f, 1f, petalAngle * i)
         }

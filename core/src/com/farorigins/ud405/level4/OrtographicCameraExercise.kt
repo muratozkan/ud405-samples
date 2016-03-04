@@ -1,14 +1,14 @@
 package com.farorigins.ud405.level4
 
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.ApplicationAdapter
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType
+import com.badlogic.gdx.math.MathUtils
+import com.badlogic.gdx.utils.TimeUtils
 
 
 /**
@@ -17,12 +17,12 @@ import com.badlogic.gdx.utils.TimeUtils;
 class OrthographicCameraExercise : ApplicationAdapter() {
 
     companion object {
-        val BALL_RADIUS = 20f;
-        val PERIOD = 2000f;
-        val X_AMPLITUDE = 40f;
-        val Y_AMPLITUDE = 20f;
-        val X_CENTER = 100f;
-        val Y_CENTER = 100f;
+        val BALL_RADIUS = 20f
+        val PERIOD = 2000f
+        val X_AMPLITUDE = 40f
+        val Y_AMPLITUDE = 20f
+        val X_CENTER = 100f
+        val Y_CENTER = 100f
     }
 
     private lateinit var renderer: ShapeRenderer
@@ -47,7 +47,7 @@ class OrthographicCameraExercise : ApplicationAdapter() {
 
     override fun resize(width: Int, height: Int) {
         // Calculate the aspect ratio (width / height)
-        val aspectRatio = width.toFloat() / height;
+        val aspectRatio = width.toFloat() / height
 
         // Set the camera's viewport height taking into account the ball's movement and radius
         camera.viewportHeight = 2f * (BALL_RADIUS + Y_AMPLITUDE)
@@ -57,8 +57,8 @@ class OrthographicCameraExercise : ApplicationAdapter() {
     }
 
     override fun render() {
-        Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         // Call update() on the camera
         camera.update()
@@ -66,11 +66,11 @@ class OrthographicCameraExercise : ApplicationAdapter() {
         // Set the SceneRenderer's projection matrix equal to the camera's combined matrix
         renderer.projectionMatrix = camera.combined
 
-        renderer.begin(ShapeType.Filled);
-        val interval = TimeUtils.timeSinceMillis(timeCreated);
-        val x = X_CENTER + X_AMPLITUDE * MathUtils.sin(MathUtils.PI2 * interval / PERIOD);
-        val y = Y_CENTER + Y_AMPLITUDE * MathUtils.sin(2 * MathUtils.PI2 * interval / PERIOD);
-        renderer.circle(x, y, BALL_RADIUS);
-        renderer.end();
+        renderer.begin(ShapeType.Filled)
+        val interval = TimeUtils.timeSinceMillis(timeCreated)
+        val x = X_CENTER + X_AMPLITUDE * MathUtils.sin(MathUtils.PI2 * interval / PERIOD)
+        val y = Y_CENTER + Y_AMPLITUDE * MathUtils.sin(2 * MathUtils.PI2 * interval / PERIOD)
+        renderer.circle(x, y, BALL_RADIUS)
+        renderer.end()
     }
 }
