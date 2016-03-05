@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType
 import com.badlogic.gdx.utils.viewport.ScreenViewport
-import com.badlogic.gdx.utils.viewport.StretchViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 
 /**
@@ -41,16 +40,16 @@ class ViewportsDemo : ApplicationAdapter() {
         viewport = ScreenViewport(camera)
 
         // Make the world fill the screen, regardless of aspect ratio
-        viewport = StretchViewport(WORLD_WIDTH.toFloat(), WORLD_HEIGHT.toFloat(), camera)
+        // viewport = StretchViewport(WORLD_WIDTH.toFloat(), WORLD_HEIGHT.toFloat(), camera)
 
         // Make the world fill the screen, maintaining aspect ratio, but bits of the world may be cut off
-        // viewport = FillViewport(WORLD_WIDTH, WORLD_HEIGHT, camera)
+        // viewport = FillViewport(WORLD_WIDTH.toFloat(), WORLD_HEIGHT.toFloat(), camera)
 
         // Fit the world inside the screen, adding black bars to pad out the extra space, maintaining aspect ratio
-        // viewport = FitViewport(WORLD_WIDTH, WORLD_HEIGHT, camera)
+        // viewport = FitViewport(WORLD_WIDTH.toFloat(), WORLD_HEIGHT.toFloat(), camera)
 
         // Make the short axis of the world larger to fill the screen, maintaining aspect ratio
-        // viewport = ExtendViewport(WORLD_WIDTH, WORLD_HEIGHT, camera)
+        // viewport = ExtendViewport(WORLD_WIDTH.toFloat(), WORLD_HEIGHT.toFloat(), camera)
 
         viewport.setScreenBounds(0, 0, Gdx.graphics.width, Gdx.graphics.height)
         renderer = ShapeRenderer()
