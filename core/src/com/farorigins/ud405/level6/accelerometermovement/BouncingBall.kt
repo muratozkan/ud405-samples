@@ -64,8 +64,8 @@ class BouncingBall(private val viewport: Viewport) : InputAdapter() {
         }
 
         if (following) {
-            velocity.x = 2 * (targetPosition.x - position.x);
-            velocity.y = 2 * (targetPosition.y - position.y);
+            velocity.x = 2 * (targetPosition.x - position.x)
+            velocity.y = 2 * (targetPosition.y - position.y)
         }
 
         // Movement
@@ -98,8 +98,8 @@ class BouncingBall(private val viewport: Viewport) : InputAdapter() {
         val accelerationY = -ACCELERATION * yAxis / (ACCELEROMETER_SENSITIVITY * ACCELERATION_OF_GRAVITY)
 
         // Apply that acceleration to the ball
-        velocity.x += delta * accelerationX;
-        velocity.y += delta * accelerationY;
+        velocity.x += delta * accelerationX
+        velocity.y += delta * accelerationY
 
         velocity.clamp(0f, MAX_SPEED)
 

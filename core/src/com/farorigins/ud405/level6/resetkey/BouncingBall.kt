@@ -104,12 +104,12 @@ class BouncingBall(private val viewport: Viewport) : InputAdapter() {
 
     override fun keyDown(keycode: Int): Boolean {
         if (keycode == Input.Keys.SPACE) {
-            randomKick();
+            randomKick()
         }
         if (keycode == Input.Keys.R) {
             init(viewport)
         }
-        return true;
+        return true
     }
 
     private fun randomKick() {

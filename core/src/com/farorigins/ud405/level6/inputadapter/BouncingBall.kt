@@ -125,9 +125,9 @@ class BouncingBall(viewport: Viewport) : InputAdapter() {
      */
     override fun keyDown(keycode: Int): Boolean {
         if (keycode == Input.Keys.SPACE) {
-            randomKick();
+            randomKick()
         }
-        return true;
+        return true
     }
 
     private fun randomKick() {

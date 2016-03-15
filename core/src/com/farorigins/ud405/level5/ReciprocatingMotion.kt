@@ -53,8 +53,8 @@ class ReciprocatingMotion : ApplicationAdapter() {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-        renderer.projectionMatrix = viewport.camera.combined;
-        renderer.begin(ShapeRenderer.ShapeType.Filled);
+        renderer.projectionMatrix = viewport.camera.combined
+        renderer.begin(ShapeRenderer.ShapeType.Filled)
 
         // Since we're using an extend viewport, the world might be bigger than we expect
         val worldCenterX = viewport.worldWidth / 2

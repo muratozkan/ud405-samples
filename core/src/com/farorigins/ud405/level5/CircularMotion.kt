@@ -80,7 +80,7 @@ class CircularMotion : ApplicationAdapter() {
 
         // Uncomment the next line to see the sort of beautiful things you can create with simple movement
         // drawFancyCircles(renderer, elapsedPeriods, 20)
-        renderer.end();
+        renderer.end()
     }
 
     private fun drawFancyCircles(renderer: ShapeRenderer, elapsedPeriods: Float, circleCount: Int) {
@@ -91,7 +91,7 @@ class CircularMotion : ApplicationAdapter() {
             var x = centerX + WORLD_SIZE / 5 * MathUtils.cos(MathUtils.PI2 * (elapsedPeriods * i / circleCount))
             var y = centerY + WORLD_SIZE / 5 * MathUtils.sin(MathUtils.PI2 * (elapsedPeriods * i / circleCount))
 
-            renderer.circle(x, y, 10f);
+            renderer.circle(x, y, 10f)
         }
     }
 }
