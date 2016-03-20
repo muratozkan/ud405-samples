@@ -26,14 +26,7 @@ object Constants {
     val HUD_MARGIN = 20.0f
 
     // Create constants for difficulty labels ("Cold", "Colder", "Coldest")
-    val EASY_LABEL = "Cold"
-    val MEDIUM_LABEL = "Colder"
-    val HARD_LABEL = "Coldest"
-
     // Create constants for the icicle spawn rates for the various difficulties
-    val EASY_SPAWNS_PER_SECOND = 5
-    val MEDIUM_SPAWNS_PER_SECOND = 15
-    val HARD_SPAWNS_PER_SECOND = 25
 }
 
 // Create Difficulty enum holding the spawn rate and label for each difficulty

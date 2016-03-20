@@ -6,9 +6,6 @@ import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.badlogic.gdx.utils.DelayedRemovalArray
 
-// Accept a difficulty in the constructor
-// Set difficulty
-// Add a Difficulty
 class Icicles(private var viewport: Viewport, val difficulty: Difficulty) {
 
     companion object {

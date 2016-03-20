@@ -1,22 +1,23 @@
 package com.farorigins.ud405.level8.adddifficultyscreen
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.InputAdapter
 import com.badlogic.gdx.Screen
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.badlogic.gdx.utils.viewport.Viewport
+import com.farorigins.ud405.level8.IciclesGame
 
-// Accept a Difficulty in the constructor
-// Set Difficulty
-// Add Difficulty
-class IciclesScreen(val difficulty: Difficulty) : Screen {
+// Accept IciclesGame in the constructor
+// Save the IciclesGame
+// Add IciclesGame member variable
+class IciclesScreen(val difficulty: Difficulty, val game: IciclesGame) : InputAdapter(), Screen {
 
     companion object {
         val TAG = IciclesScreen::class.java.name
@@ -48,10 +49,10 @@ class IciclesScreen(val difficulty: Difficulty) : Screen {
         font.region.texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear)
 
         player = Player(viewport)
-
         // Initialize icicles with the difficulty
         icicles = Icicles(viewport, difficulty)
 
+        Gdx.input.inputProcessor = this
         topScore = 0
     }
 
@@ -115,5 +116,11 @@ class IciclesScreen(val difficulty: Difficulty) : Screen {
     override fun hide() {
         renderer.dispose()
         batch.dispose()
+    }
+
+    override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
+        // Tell IciclesGame to show the difficulty screen
+        game.showDifficultyScreen()
+        return true
     }
 }
